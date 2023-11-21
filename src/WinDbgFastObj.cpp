@@ -43,7 +43,7 @@ namespace {
             return {};
         }
         SymInitialize(hProcess, NULL, TRUE);
-
+        SymSetOptions(SYMOPT_DEFERRED_LOADS);
         auto base = SymLoadModule64(hProcess, NULL, "kdexts.dll", NULL, hKdext, 0);
         if (!base && GetLastError())
         {
